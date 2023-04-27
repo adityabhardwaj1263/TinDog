@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "aditya/devops-project${BUILD_NUMBER}"
+        IMG = "aditya/devops-project"
         GIT_REPO = "https://github.com/adityabhardwaj1263/TinDog.git"
         GIT_BRANCH = "main"
         CONTAINER_NAME = "TinDog"
@@ -28,7 +29,7 @@ pipeline {
         }
         stage('Clear Image'){
             steps {
-                sh "sudo docker rmi ${IMAGE_NAME}${BUILD_NUMBER.toInteger()-1}"
+                sh "sudo docker rmi ${IMG}${BUILD_NUMBER.toInteger()-1}"
             }
         }
     }
